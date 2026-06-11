@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "TrackedOrder": {
+      "title": "TrackedOrder",
+      "description": "Mango purchase order with tracking info managed in real-time.",
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "Unique order identifier"
+        },
+        "receiptNo": {
+          "type": "string",
+          "description": "Optional receipt or invoice serial number"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer standard name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer contact phone"
+        },
+        "email": {
+          "type": "string",
+          "description": "Optional email address"
+        },
+        "division": {
+          "type": "string",
+          "description": "Division of shipment in Bangladesh"
+        },
+        "district": {
+          "type": "string",
+          "description": "District name"
+        },
+        "upazila": {
+          "type": "string",
+          "description": "Upazila/sub-district name"
+        },
+        "address": {
+          "type": "string",
+          "description": "Detailed home address"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": ["bkash", "nagad", "cod"],
+          "description": "Chosen payment route"
+        },
+        "paymentAmount": {
+          "type": "string",
+          "description": "Payment amount confirmation string"
+        },
+        "cartItems": {
+          "type": "array",
+          "description": "Items purchased under this order, containing item-level delivery statuses"
+        },
+        "cartTotal": {
+          "type": "number",
+          "description": "Total price before delivery charge"
+        },
+        "deliveryFee": {
+          "type": "number",
+          "description": "Calculated delivery cost"
+        },
+        "grandTotal": {
+          "type": "number",
+          "description": "Total cost of order"
+        },
+        "amountToPay": {
+          "type": "number",
+          "description": "Remaining or total payable amount"
+        },
+        "date": {
+          "type": "string",
+          "description": "Order placement date string"
+        },
+        "time": {
+          "type": "string",
+          "description": "Order placement time string"
+        },
+        "createdAtTimestamp": {
+          "type": "number",
+          "description": "Milliseconds value for chronology sorting"
+        }
+      },
+      "required": ["orderId", "customerName", "phone", "grandTotal"]
+    }
+  },
+  "firestore": {
+    "orders/{orderId}": {
+      "schema": "TrackedOrder",
+      "description": "Shared orders store between Aam Bahar primary buyer storefront and sub-domain admin dashboards"
+    }
+  }
+}

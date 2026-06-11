@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -------------------------------------------------------------
+    // 'orders' Collection Rules
+    // -------------------------------------------------------------
+    match /orders/{orderId} {
+      
+      // 1. Create (অর্ডার সাবমিট): যে কেউ নতুন অর্ডার তৈরি করতে পারবে।
+      // আমরা ডেটার কিছু বেসিক ভ্যালিডেশন সেট করতে পারি যাতে হ্যাকাররা আবর্জনা ডাটা পাঠাতে না পারে।
+      allow create: if request.resource.data.orderId == orderId 
+                    && request.resource.data.customerName is string
+                    && request.resource.data.phone is string
+                    && request.resource.data.grandTotal is number;
+
+      // 2. Get (অর্ডার ট্র্যাকিং): গ্রাহক নিজের অর্ডার আইডি দিয়ে সার্চ করতে পারবেন।
+      // এখানে 'get' অনুমতি দেওয়া হয়েছে, কিন্তু 'list' (পুরো তালিকা ডাউনলোড) করার অনুমতি বন্ধ রাখা হয়েছে।
+      // এর ফলে কেউ পুরো ডাটাবেজ স্ক্র্যাপ (Scrape) বা চুরি করতে পারবে না।
+      allow get: if true;
+
+      // 3. List (অর্ডারের তালিকা): গ্রাহক পুরো ডাটাবেজের সব অর্ডার একসাথে দেখতে পাবেন না।
+      // শুধুমাত্র অথেন্টিকেটেড অ্যাডমিনরা (Firebase Auth এর মাধ্যমে) পুরো তালিকা দেখতে পাবেন।
+      allow list: if request.auth != null;
+
+      // 4. Update & Delete (অর্ডার এডিট ও ডিলিট): অ্যাডমিন ছাড়া কেউ মেমো এডিট বা ডিলিট করতে পারবে না।
+      allow update, delete: if request.auth != null;
+    }
+
+    // অন্য যেকোনো কালেকশনের ক্ষেত্রে অ্যাক্সেস ডিফল্টভাবে সুরক্ষিত রাখুন
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #033621;
+  --color-accent: #f58220;
+  --color-bg-site: #FAFAF7;
+  --color-text-main: #1a1a1a;
+  
+  --font-sans: 'Anek Bangla', 'Hind Siliguri', 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+@layer base {
+  body {
+
+    @apply font-sans bg-bg-site text-text-main;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Aam Bahar",
+  "description": "Premium organic mangoes from Rajshahi and Chapainawabganj with live real-time order tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

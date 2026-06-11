@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      try {
+        const originalFetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          configurable: true,
+          get() { return originalFetch; },
+          set(val) { console.warn('Something tried to set window.fetch'); }
+        });
+      } catch (e) {
+        console.error('Could not redefine window.fetch', e);
+      }
+    </script>
+    <title>আম বাহার — Premium Online Mango Shop Bangladesh</title>
+    <meta name="description" content="সরাসরি বাগান থেকে আপনার দরজায় মৌসুমি আম। ১০০% রাসায়নিকমুক্ত ও শতভাগ নিরাপদ রাসায়নিকমুক্ত আম।" />
+    <meta name="keywords" content="আম বাহার, আম, রাজশাহীর আম, ফরমালিন মুক্ত আম, Mango Bangladesh, Aam Bahar, Buy Mango Online, Fresh Mango, Rajshahi Mango" />
+    <meta name="author" content="Aam Bahar" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ais-pre-ogy25nof3b4xgjdi23brwv-130553995913.asia-east1.run.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ais-pre-ogy25nof3b4xgjdi23brwv-130553995913.asia-east1.run.app/" />
+    <meta property="og:title" content="আম বাহার — Premium Online Mango Shop Bangladesh" />
+    <meta property="og:description" content="সরাসরি বাগান থেকে আপনার দরজায় মৌসুমি আম। ১০০% রাসায়নিকমুক্ত ও শতভাগ নিরাপদ রাসায়নিকমুক্ত আম।" />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:site_name" content="আম বাহার" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ais-pre-ogy25nof3b4xgjdi23brwv-130553995913.asia-east1.run.app/" />
+    <meta property="twitter:title" content="আম বাহার — Premium Online Mango Shop Bangladesh" />
+    <meta property="twitter:description" content="সরাসরি বাগান থেকে আপনার দরজায় মৌসুমি আম। ১০০% রাসায়নিকমুক্ত ও শতভাগ নিরাপদ রাসায়নিকমুক্ত আম।" />
+    <meta property="twitter:image" content="/logo.png" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Top-level wrapper for React app -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
